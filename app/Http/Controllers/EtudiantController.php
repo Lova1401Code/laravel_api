@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Etudiants;
 use Illuminate\Http\Request;
 
 class EtudiantController extends Controller
@@ -16,14 +17,29 @@ class EtudiantController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    //fonction pour créer un etudiant
+    public function create(Request $request)
     {
-        //
+        //return requete
+        //validation
+        $request->validate([
+            "nom" => "required",
+            "email" => "require|email|unique:etudiants",
+            "password" => "required"
+        ]);
+
+        //créer un étudiant
+        $etudiant = new Etudiants();
+        $etudiant->nom = $request->nom;
+        $etudiant->email = $request->email;
+        $etudiant->password = $request->password;
+        $etudiant->save();
+        
+        //renvoi de réponse personnalisé
+        return response()->json([
+            "status" => 1,
+            "message" => "etudiant créer avec success"
+        ]);
     }
 
     /**
