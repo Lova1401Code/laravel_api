@@ -11,7 +11,7 @@ class EtudiantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function listEtudiants()
     {
         //
     }
@@ -43,7 +43,7 @@ class EtudiantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function getEtudiant($id)
     {
         //
     }
