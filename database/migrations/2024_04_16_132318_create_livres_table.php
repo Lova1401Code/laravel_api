@@ -16,8 +16,8 @@ class CreateLivresTable extends Migration
         Schema::create('livres', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->string('email')->unique();
-            $table->string('motDePasse');
+            $table->string('auteur');
+            $table->string('edition');
             $table->timestamps();
         });
     }
